@@ -1,0 +1,8 @@
+C:\Users\Allievo 10\source\repos\SportsClub\EF_DB_Layer\bin\Debug\netcoreapp2.1\EF_DB_Layer.deps.json
+C:\Users\Allievo 10\source\repos\SportsClub\EF_DB_Layer\bin\Debug\netcoreapp2.1\EF_DB_Layer.runtimeconfig.json
+C:\Users\Allievo 10\source\repos\SportsClub\EF_DB_Layer\bin\Debug\netcoreapp2.1\EF_DB_Layer.runtimeconfig.dev.json
+C:\Users\Allievo 10\source\repos\SportsClub\EF_DB_Layer\bin\Debug\netcoreapp2.1\EF_DB_Layer.dll
+C:\Users\Allievo 10\source\repos\SportsClub\EF_DB_Layer\obj\Debug\netcoreapp2.1\EF_DB_Layer.csprojAssemblyReference.cache
+C:\Users\Allievo 10\source\repos\SportsClub\EF_DB_Layer\obj\Debug\netcoreapp2.1\EF_DB_Layer.csproj.CoreCompileInputs.cache
+C:\Users\Allievo 10\source\repos\SportsClub\EF_DB_Layer\obj\Debug\netcoreapp2.1\EF_DB_Layer.AssemblyInfoInputs.cache
+C:\Users\Allievo 10\source\repos\SportsClub\EF_DB_Layer\obj\Debug\netcoreapp2.1\EF_DB_Layer.AssemblyInfo.cs
