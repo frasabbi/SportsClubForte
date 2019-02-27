@@ -1,7 +1,0 @@
-C:\Users\Allievo 10\source\repos\SportsClub\SportsClubModel\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.dll
-C:\Users\Allievo 10\source\repos\SportsClub\SportsClubModel\bin\Debug\netcoreapp2.1\SportsClubWeb.dll
-C:\Users\Allievo 10\source\repos\SportsClub\SportsClubModel\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.xml
-C:\Users\Allievo 10\source\repos\SportsClub\SportsClubModel\obj\Debug\netcoreapp2.1\SportsClubModel.csprojAssemblyReference.cache
-C:\Users\Allievo 10\source\repos\SportsClub\SportsClubModel\obj\Debug\netcoreapp2.1\SportsClubModel.csproj.CoreCompileInputs.cache
-C:\Users\Allievo 10\source\repos\SportsClub\SportsClubModel\obj\Debug\netcoreapp2.1\SportsClubModel.AssemblyInfoInputs.cache
-C:\Users\Allievo 10\source\repos\SportsClub\SportsClubModel\obj\Debug\netcoreapp2.1\SportsClubModel.AssemblyInfo.cs
