@@ -9,5 +9,6 @@ namespace SportsClubModel
     {
         IQueryable<Challenge> Challenges { get; }
         void AddChallenge(Challenge challenge);
+        void RemoveChallenge(int challengeId);
     }
 }

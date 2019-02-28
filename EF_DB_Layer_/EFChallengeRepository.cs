@@ -21,5 +21,10 @@ namespace EF_DB_Layer
         {
             context.Add(challenge);
         }
+
+        public void RemoveChallenge(int challengeId)
+        {
+            var chal = context.Challenges.Where(ch => ch.ChallengeId == challengeId).Single();
+        }
     }
 }

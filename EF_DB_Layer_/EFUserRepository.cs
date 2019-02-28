@@ -30,28 +30,32 @@ namespace EF_DB_Layer
             context.Remove(user);
         }
 
-        public async Task<User[]> GetAllUsersAsync()
+        public async Task<IQueryable<User>> GetAllUsersAsync()
         {
-            return await context.Users.ToArrayAsync();
+            var gau= await context.Users.ToArrayAsync();
+            return gau.AsQueryable();
         }
 
-        public async Task<User[]> GetAllUsersByLastNameAsync(string token)
+        public async Task<IQueryable<User>> GetAllUsersByLastNameAsync(string token)
         {
-            return await context.Users.Where(r => r.LastName.Contains(token)).ToArrayAsync();
+            var gau = await context.Users.Where(r => r.LastName.Contains(token)).ToArrayAsync();
+            return gau.AsQueryable();
+
         }
 
-        public async Task<User[]> GetBestWinner()
-        {
-            var max = context.Users.Max(r => r.Wins);
-            return await context.Users.Where(r => r.Wins == max).ToArrayAsync();
-        }
+        //public async Task<IQueryable<User>> GetBestWinner()
+        //{
+        //    var max = context.Users.Max(r => r.Wins);
+        //    return await context.Users.Where(r => r.Wins == max).ToArrayAsync();
+        //}
 
-        public async Task<User[]> GetUsersByDateOfBirthRange(DateTime start, DateTime end)
+        public async Task<IQueryable<User>> GetUsersByDateOfBirthRange(DateTime start, DateTime end)
         {
             start = start.Date;
             end = end.Date;
 
-            return await context.Users.Where(r => r.BirthDate > start && r.BirthDate < end).ToArrayAsync();
+            var user= await context.Users.Where(r => r.BirthDate > start && r.BirthDate < end).ToArrayAsync();
+            return user.AsQueryable();
         }
 
 

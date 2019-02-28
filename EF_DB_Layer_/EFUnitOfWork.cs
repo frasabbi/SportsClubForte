@@ -25,13 +25,14 @@ namespace EF_DB_Layer
             context = ctx;
         }
 
-        public bool AddUser(User user)
+        public async Task<bool> AddUser(User user)
         {
             try
             {
                 UserRepository.AddUser(user);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return true;
+                
             }
             catch(DbUpdateException)
             {
@@ -39,12 +40,27 @@ namespace EF_DB_Layer
             }
         }
 
-        public bool AddReservation(Reservation reservation)
+        public async Task<bool> RemoveUser(int userId)
+        {
+            try
+            {
+                UserRepository.RemoveUser(userId);
+                await context.SaveChangesAsync();
+                return true;
+
+            }
+            catch (DbUpdateException)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> AddReservation(Reservation reservation)
         {
             try
             {
                 ReservationRepository.AddReservation(reservation);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return true;
             }
             catch(DbUpdateException)
@@ -53,12 +69,54 @@ namespace EF_DB_Layer
             }
         }
 
-        public bool AddField(Field field)
+        public async Task<bool> RemoveReservation(int reservationId)
+        {
+            try
+            {
+                ReservationRepository.RemoveReservation(reservationId);
+                await context.SaveChangesAsync();
+                return true;
+            }
+            catch (DbUpdateException)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> AddField(Field field)
         {
             try
             {
                 FieldRepository.AddField(field);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
+                return true;
+            }
+            catch (DbUpdateException)
+            {
+                return false;
+            }
+        }
+
+        //public async Task<bool> RemoveField(int fieldId)
+        //{
+        //    try
+        //    {
+        //        FieldRepository.RemoveField(fieldId);
+        //        await context.SaveChangesAsync();
+        //        return true;
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        public async Task<bool> RemoveChallenge(int challengeId)
+        {
+            try
+            {
+                ChallengeRepository.RemoveChallenge(challengeId);
+                await context.SaveChangesAsync();
                 return true;
             }
             catch (DbUpdateException)

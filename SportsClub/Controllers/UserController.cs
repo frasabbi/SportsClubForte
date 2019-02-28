@@ -73,20 +73,20 @@ namespace SportsClubWeb.Controllers
             }
         }
 
-        [HttpGet("{wins}")]
-        public async Task<ActionResult<UserDTO[]>> GetBestWinner()
-        {
-            try
-            {
-                var results = await unitOfWork.UserRepository.GetBestWinner();
-                if (!results.Any()) return NotFound();
+        //[HttpGet("{wins}")]
+        //public async Task<ActionResult<UserDTO[]>> GetBestWinner()
+        //{
+        //    try
+        //    {
+        //        var results = await unitOfWork.UserRepository.GetBestWinner();
+        //        if (!results.Any()) return NotFound();
 
-                return Mapper.Map<UserDTO[]>(results);
-            }
-            catch (Exception)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
-            }
-        }
+        //        return Mapper.Map<UserDTO[]>(results);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+        //    }
+        //}
     }
 }

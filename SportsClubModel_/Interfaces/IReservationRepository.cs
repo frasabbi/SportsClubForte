@@ -11,9 +11,10 @@ namespace SportsClubModel
     {
         IQueryable<Reservation> Reservations { get; }
         void AddReservation(Reservation reservation);
-        Task<Reservation[]> GetAllReservationsAsync();
-        Task<Reservation[]> GetReservationsByField(int fieldId);
-        Task<Reservation[]> GetReservationsByUserId(int userId);
-        Task<Reservation[]> GetReservationsByDate(DateTime start, DateTime end);
+        void RemoveReservation(int reservationId);
+        Task<IQueryable<Reservation>> GetAllReservationsAsync();
+        Task<IQueryable<Reservation>> GetReservationsByField(int fieldId);
+        Task<IQueryable<Reservation>> GetReservationsByUserId(int userId);
+        Task<IQueryable<Reservation>> GetReservationsByDate(DateTime start, DateTime end);
     }
 }

@@ -24,28 +24,45 @@ namespace EF_DB_Layer
             context.Add(reservation);
         }
 
-        public async Task<Reservation[]> GetAllReservationsAsync()
+        public async Task<IQueryable<Reservation>> GetAllReservationsAsync()
         {
-            return await context.Reservations.ToArrayAsync();
+            var listAsync = await context.Reservations.ToListAsync();
+            return listAsync.AsQueryable();
         }
 
-        public async Task<Reservation[]> GetReservationsByField(int fieldId)
+        public async Task<IQueryable<Reservation>> GetReservationsByField(int fieldId)
         {
-            return await context.Reservations.Where(r => r.FieldId == fieldId).ToArrayAsync();
+           var listAsync = await context.Reservations.Where(r => r.FieldId == fieldId).ToListAsync();
+            return listAsync.AsQueryable();
         }
 
-        public async Task<Reservation[]> GetReservationsByUserId(int userId)
+        public async Task<IQueryable<Reservation>> GetReservationsByUserId(int userId)
         {
-            return await context.Reservations.Where(r => r.UserId == userId).ToArrayAsync();
+            var listAsync = await context.Reservations.Where(r => r.UserId == userId).ToListAsync();
+            return listAsync.AsQueryable();
         }
 
-        public async Task<Reservation[]> GetReservationsByDate(DateTime start, DateTime end)
+        public async Task<IQueryable<Reservation>> GetReservationsByDate(DateTime start, DateTime end)
         {
             start = start.Date;
             end = end.Date;
 
-            return await context.Reservations.Where(r => r.Date > start && r.Date < end).ToArrayAsync();
+            var o = await context.Reservations.Where(r => r.Date > start && r.Date < end).ToListAsync();
+            return o.AsQueryable();
+        }
 
+        public void RemoveReservation(int reservationId)
+        {
+
+            var res = context.Reservations.Where(r => r.ReservationId == reservationId).Single();
+
+            if(res.IsChallenge)
+            {
+                var cha = context.Challenges.Where(c => c.ChallengeId == res.ChallengeId).Single();
+                context.Challenges.Remove(cha);
+            }
+            context.Reservations.Remove(res);
+   
         }
     }
 }

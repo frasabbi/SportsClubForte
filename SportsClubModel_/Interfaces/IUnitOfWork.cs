@@ -12,6 +12,13 @@ namespace SportsClubModel
         IReservationRepository ReservationRepository { get; set; }
         IUserRepository UserRepository { get; set; }
 
-        bool AddUser(User user);
+        Task<bool> AddUser(User user);
+        Task<bool> AddReservation(Reservation reservation);
+        Task<bool> AddField(Field field);
+        Task<bool> RemoveUser(int userId);
+        Task<bool> RemoveReservation(int reservationId);
+        //Task<bool> RemoveField(int fieldId);
+        Task<bool> RemoveChallenge(int challengeId);
+
     }
 }
