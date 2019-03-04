@@ -14,11 +14,8 @@ namespace SportsClubWeb.DTO
         public DateTime Date { get; set; }
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }
-        public ReservationsType ReservationType { get; set; }
         public decimal Price { get; set; }
         public int UserReservations { get; set; }
-
-        public enum ReservationsType { Tennis_Single, Tennis_Double, Paddle_Single, Paddle_Double, Soccer_5vs5, Soccer_7vs7 };
 
     }
 }

@@ -4,14 +4,16 @@ using EF_DB_Layer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EF_DB_Layer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190301104016_Modified0103")]
+    partial class Modified0103
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,14 +29,9 @@ namespace EF_DB_Layer.Migrations
 
                     b.Property<int>("PlayersToInsert");
 
-                    b.Property<int>("ReservationId");
-
                     b.Property<int>("UserId");
 
                     b.HasKey("ChallengeId");
-
-                    b.HasIndex("ReservationId")
-                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -70,6 +67,8 @@ namespace EF_DB_Layer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ChallengeId");
+
                     b.Property<DateTime>("Date");
 
                     b.Property<int>("FieldId");
@@ -89,6 +88,8 @@ namespace EF_DB_Layer.Migrations
                     b.Property<int>("UserId");
 
                     b.HasKey("ReservationId");
+
+                    b.HasIndex("ChallengeId");
 
                     b.HasIndex("FieldId");
 
@@ -170,11 +171,6 @@ namespace EF_DB_Layer.Migrations
 
             modelBuilder.Entity("SportsClubModel.Challenge", b =>
                 {
-                    b.HasOne("SportsClubModel.Reservation", "Reservation")
-                        .WithOne("Challenge")
-                        .HasForeignKey("SportsClubModel.Challenge", "ReservationId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("SportsClubModel.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -183,6 +179,11 @@ namespace EF_DB_Layer.Migrations
 
             modelBuilder.Entity("SportsClubModel.Reservation", b =>
                 {
+                    b.HasOne("SportsClubModel.Challenge", "Challenge")
+                        .WithMany()
+                        .HasForeignKey("ChallengeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("SportsClubModel.Field", "Field")
                         .WithMany()
                         .HasForeignKey("FieldId")

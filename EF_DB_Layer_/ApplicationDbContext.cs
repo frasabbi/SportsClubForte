@@ -28,6 +28,12 @@ namespace EF_DB_Layer
                 .HasValue<PaddleCourt>((int)Sports.Paddle)
                 .HasValue<TennisCourt>((int)Sports.Tennis)
                 .HasValue<SoccerField>((int)Sports.Soccer);
+
+            modelbuilder.Entity<Challenge>()
+                .HasOne(c => c.Reservation)
+                .WithOne(r => r.Challenge)
+                .HasForeignKey<Challenge>(c => c.ReservationId)
+                .IsRequired().OnDelete(DeleteBehavior.Restrict);
         }
     }
 

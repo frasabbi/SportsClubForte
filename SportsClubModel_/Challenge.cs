@@ -14,6 +14,8 @@ namespace SportsClubModel
         public List<User> Team1 { get; set; }
         public List<User> Team2 { get; set; }
         public int PlayersToInsert { get; set; }
+        public int ReservationId { get; set; }
+        public Reservation Reservation { get; set; }
 
         public Challenge() { }
 

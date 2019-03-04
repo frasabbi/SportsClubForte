@@ -12,6 +12,7 @@ namespace SportsClubModel
         public string Name { get; set; }
         public Surfaces Surface { get; set; }
         public decimal Price { get; set; }
+        public int Players { get; set; }
     }
 
     public enum Sports { Tennis, Paddle, Soccer }

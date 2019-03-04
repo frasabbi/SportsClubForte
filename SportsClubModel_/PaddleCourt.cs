@@ -13,6 +13,7 @@ namespace SportsClubModel
             Name = name;
             Surface = surface;
             Price = price;
+            Players = 4;
         }
     }
 }
