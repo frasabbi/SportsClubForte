@@ -13,7 +13,7 @@ namespace EF_DB_Layer
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Reservation> Reservations { get; set; } 
 
         public DbSet<User> Users { get; set; }
 
@@ -29,11 +29,16 @@ namespace EF_DB_Layer
                 .HasValue<TennisCourt>((int)Sports.Tennis)
                 .HasValue<SoccerField>((int)Sports.Soccer);
 
-            modelbuilder.Entity<Challenge>()
-                .HasOne(c => c.Reservation)
-                .WithOne(r => r.Challenge)
-                .HasForeignKey<Challenge>(c => c.ReservationId)
-                .IsRequired().OnDelete(DeleteBehavior.Restrict);
+            //modelbuilder.Entity<Challenge>()
+            //    .HasOne(c => c.Reservation)
+            //    .WithOne(r => r.Challenge)
+            //    .HasForeignKey<Challenge>(c => c.ReservationId)
+            //    .IsRequired().OnDelete(DeleteBehavior.Restrict);
+
+            modelbuilder.Entity<Reservation>()
+                .HasOne(r => r.Challenge)
+                .WithOne(c => c.Reservation)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 

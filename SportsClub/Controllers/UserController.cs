@@ -7,26 +7,19 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SportsClubModel;
 using SportsClubWeb.DTO;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Routing;
-
 
 namespace SportsClubWeb.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class UserController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
-        //private readonly LinkGenerator _linkGenerator;
-        
 
-        public UserController(IUnitOfWork unit, IMapper mapper /*LinkGenerator linkGenerator*/)
+        public UserController(IUnitOfWork unit, IMapper mapper)
         {
             unitOfWork = unit;
             _mapper = mapper;
-            //_linkGenerator = linkGenerator;
         }
 
         [HttpGet]
@@ -93,88 +86,5 @@ namespace SportsClubWeb.Controllers
         //        return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
         //    }
         //}
-
-        public async Task<ActionResult<UserDTO>> Post(UserDTO model)
-        {
-            try
-            {
-                var existingUser = await unitOfWork.GetUserAsync(model.UserId);
-                if (existingUser != null)
-                {
-                    return BadRequest("User already exist");
-                }
-
-                //var location = _linkGenerator.GetPathByAction("Get",
-                //  "Users",
-                //  new { user = model.UserId });
-
-                //if (string.IsNullOrWhiteSpace(location))
-                //{
-                //    return BadRequest("Could not use current user");
-                //}
-
-                // Create a new Camp
-                var user = _mapper.Map<User>(model);
-                //await unitOfWork.AddUser(user);
-                if (await unitOfWork.AddUser(user))
-                {
-                    return Created($"/api/Users/{user.UserId}", _mapper.Map<UserDTO>(user));
-                }
-
-            }
-            catch (Exception)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
-            }
-
-            return BadRequest();
-        }
-
-        [HttpPut("{userId}")]
-        public async Task<ActionResult<UserDTO>> Put(int userId, UserDTO model)
-        {
-            try
-            {
-                var oldUser = await unitOfWork.GetUserAsync(userId);
-                if (oldUser == null) return NotFound($"Could not find user: {userId}");
-
-                _mapper.Map(model, oldUser);
-
-                if (await unitOfWork.SaveChangesAsync())
-                {
-                    return _mapper.Map<UserDTO>(oldUser);
-                }
-            }
-            catch (Exception)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
-            }
-
-            return BadRequest();
-        }
-
-        [HttpDelete("{userId}")]
-        public async Task<IActionResult> Delete(int userId)
-        {
-            try
-            {
-                var oldUser = await unitOfWork.GetUserAsync(userId);
-                if (oldUser == null) return NotFound();
-
-                await unitOfWork.RemoveUser(oldUser.UserId);
-
-                if (await unitOfWork.SaveChangesAsync())
-                {
-                    return Ok();
-                }
-
-            }
-            catch (Exception)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
-            }
-
-            return BadRequest("Failed to delete user");
-        }
     }
 }

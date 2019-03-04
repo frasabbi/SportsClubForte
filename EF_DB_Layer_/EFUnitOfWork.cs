@@ -26,37 +26,12 @@ namespace EF_DB_Layer
         }
 
         //I metodi non restituiscono bool
-
-        //General
-        public async Task<bool> SaveChangesAsync()
-        {
-
-            // Only return success if at least one row was changed
-            return (await context.SaveChangesAsync()) > 0;
-        }
-
-        public string ToSport(string courtName)
-        {
-            string sport = null;
-
-            if (courtName.Contains("Court"))
-            {
-                sport = courtName.Replace("Court", "");
-            }
-            else if (courtName.Contains("Field"))
-            {
-                sport = courtName.Replace("Field", "");
-            }
-            return sport;
-        }
-
-        //User
         public async Task<bool> AddUser(User user)
         {
             try
             {
                 UserRepository.AddUser(user);
-                await SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return true;
                 
             }
@@ -71,7 +46,7 @@ namespace EF_DB_Layer
             try
             {
                 UserRepository.RemoveUser(userId);
-                await SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return true;
 
             }
@@ -81,20 +56,6 @@ namespace EF_DB_Layer
             }
         }
 
-        public async Task<User> GetUserAsync(int userId)
-        {
-            try
-            {
-                var user = await UserRepository.GetUserById(userId);
-                return user;
-            }
-            catch (DbUpdateException)
-            {
-                return null;
-            }
-        }
-
-        //Reservation
         public async Task<bool> AddReservation(Reservation reservation)
         {
             try
@@ -125,7 +86,7 @@ namespace EF_DB_Layer
                     reservation.Challenge.Reservation = reservation;
                 }
                 ReservationRepository.AddReservation(reservation);
-                await SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return true;
             }
             catch(DbUpdateException)
@@ -139,7 +100,7 @@ namespace EF_DB_Layer
             try
             {
                 ReservationRepository.RemoveReservation(reservationId);
-                await SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return true;
             }
             catch (DbUpdateException)
@@ -148,13 +109,12 @@ namespace EF_DB_Layer
             }
         }
 
-        //Field
         public async Task<bool> AddField(Field field)
         {
             try
             {
                 FieldRepository.AddField(field);
-                await SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return true;
             }
             catch (DbUpdateException)
@@ -177,9 +137,6 @@ namespace EF_DB_Layer
         //    }
         //}
 
-    
-
-        //Challenge
         public async Task<bool> RemoveChallenge(int challengeId)
         {
             try
@@ -193,6 +150,20 @@ namespace EF_DB_Layer
                 return false;
             }
         }
-      
+
+        public string ToSport(string courtName)
+        {
+            string sport = null;
+
+            if (courtName.Contains("Court"))
+            {
+                sport = courtName.Replace("Court", "");
+            }
+            else if (courtName.Contains("Field"))
+            {
+                sport = courtName.Replace("Field", "");
+            }
+            return sport;
+        }
     }
 }

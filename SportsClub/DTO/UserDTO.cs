@@ -11,8 +11,6 @@ namespace SportsClubWeb.DTO
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
-        public DateTime DateOfRegistration { get; set; }
-        public string Address { get; set; }
         public int Wins { get; set; }
     }
 }

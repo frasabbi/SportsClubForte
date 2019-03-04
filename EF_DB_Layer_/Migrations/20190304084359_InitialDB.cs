@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EF_DB_Layer.Migrations
 {
-    public partial class FirstMigrationTry : Migration
+    public partial class InitialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,41 +15,15 @@ namespace EF_DB_Layer.Migrations
                     FieldId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    Sport = table.Column<int>(nullable: false),
                     Surface = table.Column<int>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
-                    Sports = table.Column<int>(nullable: false)
+                    Players = table.Column<int>(nullable: false),
+                    Sports = table.Column<int>(nullable: false),
+                    IsSeven = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Fields", x => x.FieldId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Reservations",
-                columns: table => new
-                {
-                    ReservationId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
-                    Sport = table.Column<int>(nullable: false),
-                    FieldId = table.Column<int>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
-                    TimeStart = table.Column<string>(nullable: true),
-                    TimeEnd = table.Column<string>(nullable: true),
-                    ReservationType = table.Column<int>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
-                    ChallengeId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reservations", x => x.ReservationId);
-                    table.ForeignKey(
-                        name: "FK_Reservations_Fields_FieldId",
-                        column: x => x.FieldId,
-                        principalTable: "Fields",
-                        principalColumn: "FieldId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,17 +50,57 @@ namespace EF_DB_Layer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    ReservationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(nullable: false),
+                    Sport = table.Column<string>(nullable: true),
+                    FieldId = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    TimeStart = table.Column<DateTime>(nullable: false),
+                    TimeEnd = table.Column<DateTime>(nullable: false),
+                    IsDouble = table.Column<bool>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    IsChallenge = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.ReservationId);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Fields_FieldId",
+                        column: x => x.FieldId,
+                        principalTable: "Fields",
+                        principalColumn: "FieldId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Challenges",
                 columns: table => new
                 {
                     ChallengeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<int>(nullable: false),
-                    PlayersToInsert = table.Column<int>(nullable: false)
+                    PlayersToInsert = table.Column<int>(nullable: false),
+                    ReservationId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Challenges", x => x.ChallengeId);
+                    table.ForeignKey(
+                        name: "FK_Challenges_Reservations_ReservationId",
+                        column: x => x.ReservationId,
+                        principalTable: "Reservations",
+                        principalColumn: "ReservationId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Challenges_Users_UserId",
                         column: x => x.UserId,
@@ -96,19 +110,25 @@ namespace EF_DB_Layer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Challenges_ReservationId",
+                table: "Challenges",
+                column: "ReservationId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Challenges_UserId",
                 table: "Challenges",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_ChallengeId",
-                table: "Reservations",
-                column: "ChallengeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Reservations_FieldId",
                 table: "Reservations",
                 column: "FieldId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_UserId",
+                table: "Reservations",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_ChallengeId",
@@ -119,14 +139,6 @@ namespace EF_DB_Layer.Migrations
                 name: "IX_Users_ChallengeId1",
                 table: "Users",
                 column: "ChallengeId1");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Reservations_Challenges_ChallengeId",
-                table: "Reservations",
-                column: "ChallengeId",
-                principalTable: "Challenges",
-                principalColumn: "ChallengeId",
-                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Users_Challenges_ChallengeId",
@@ -147,6 +159,10 @@ namespace EF_DB_Layer.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Challenges_Reservations_ReservationId",
+                table: "Challenges");
+
             migrationBuilder.DropForeignKey(
                 name: "FK_Challenges_Users_UserId",
                 table: "Challenges");
