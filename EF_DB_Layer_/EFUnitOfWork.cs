@@ -128,19 +128,19 @@ namespace EF_DB_Layer
             }
         }
 
-        //public async Task<bool> RemoveField(int fieldId)
-        //{
-        //    try
-        //    {
-        //        FieldRepository.RemoveField(fieldId);
-        //        await context.SaveChangesAsync();
-        //        return true;
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        return false;
-        //    }
-        //}
+        public async Task<bool> RemoveField(int fieldId)
+        {
+            try
+            {
+                FieldRepository.RemoveField(fieldId);
+                await context.SaveChangesAsync();
+                return true;
+            }
+            catch (DbUpdateException)
+            {
+                return false;
+            }
+        }
 
         public async Task<bool> RemoveChallenge(int challengeId)
         {

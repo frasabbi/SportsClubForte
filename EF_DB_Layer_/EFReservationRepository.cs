@@ -24,6 +24,7 @@ namespace EF_DB_Layer
             context.Add(reservation);
         }
 
+        //Da rivedere
         public async Task<IQueryable<Reservation>> GetAllReservationsAsync()
         {
             var listAsync = await context.Reservations.Include(r => r.Challenge).ToListAsync();
