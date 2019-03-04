@@ -19,6 +19,7 @@ namespace SportsClubModel
         Task<bool> RemoveReservation(int reservationId);
         //Task<bool> RemoveField(int fieldId);
         Task<bool> RemoveChallenge(int challengeId);
+        Task<bool> SaveChangesAsync();
 
     }
 }
