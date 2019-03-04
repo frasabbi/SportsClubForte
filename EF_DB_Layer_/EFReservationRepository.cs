@@ -54,14 +54,14 @@ namespace EF_DB_Layer
         public void RemoveReservation(int reservationId)
         {
 
-            //var res = context.Reservations.Where(r => r.ReservationId == reservationId).Single();
+            var res = context.Reservations.Where(r => r.ReservationId == reservationId).Single();
 
-            //if(res.IsChallenge)
-            //{
-            //    var cha = context.Challenges.Where(c => c.ChallengeId == res.ChallengeId).Single();
-            //    context.Challenges.Remove(cha);
-            //}
-            //context.Reservations.Remove(res);
+            if(res.IsChallenge)
+            {
+                var cha = context.Challenges.Where(c => c.ChallengeId == res.Challenge.ChallengeId).Single();
+                context.Challenges.Remove(cha);
+            }
+            context.Reservations.Remove(res);
         }
 
     }
