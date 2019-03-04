@@ -18,5 +18,5 @@ namespace SportsClubModel
     public enum Sports { Tennis, Paddle, Soccer }
     public enum Surfaces { Clay, Grass, Concrete }
 
-   
+
 }
