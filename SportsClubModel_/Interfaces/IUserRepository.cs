@@ -15,6 +15,7 @@ namespace SportsClubModel
         Task<IQueryable<User>> GetAllUsersAsync();
         Task<IQueryable<User>> GetAllUsersByLastNameAsync(string token);
         Task<IQueryable<User>> GetUsersByDateOfBirthRange(DateTime start, DateTime end);
+        Task<User> GetUserById(int userId);
         //Task<IQueryable<User>> GetBestWinner();
     }
 }

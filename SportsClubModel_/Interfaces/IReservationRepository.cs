@@ -16,5 +16,7 @@ namespace SportsClubModel
         Task<IQueryable<Reservation>> GetReservationsByField(int fieldId);
         Task<IQueryable<Reservation>> GetReservationsByUserId(int userId);
         Task<IQueryable<Reservation>> GetReservationsByDate(DateTime start, DateTime end);
+        Task<Reservation> GetReservationByReservationId(int reservationId);
+
     }
 }

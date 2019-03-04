@@ -58,6 +58,9 @@ namespace EF_DB_Layer
             return user.AsQueryable();
         }
 
-
+        public async Task<User> GetUserById(int userId)
+        {
+            return await context.Users.SingleOrDefaultAsync(u => u.UserId == userId);
+        }
     }
 }

@@ -11,11 +11,13 @@ namespace SportsClubWeb.DTO
         public int ReservationId { get; set; }
         public string UserFirstName { get; set; }
         public string UserLastName { get; set; }
+        public string Sport { get; set; }
         public DateTime Date { get; set; }
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }
         public decimal Price { get; set; }
-        public int UserReservations { get; set; }
+        public bool IsDouble { get; set; }
+        public bool IsChallenge { get; set; }
 
     }
 }

@@ -14,12 +14,12 @@ namespace SportsClubWeb.Controllers
     public class UserController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper _mapper;
+        private readonly IMapper Mapper;
 
         public UserController(IUnitOfWork unit, IMapper mapper)
         {
             unitOfWork = unit;
-            _mapper = mapper;
+            Mapper = mapper;
         }
 
         [HttpGet]
@@ -31,7 +31,7 @@ namespace SportsClubWeb.Controllers
                 var results = await unitOfWork.UserRepository.GetAllUsersAsync();
                 if (!results.Any()) return NotFound();
 
-                return Mapper.Map<UserDTO[]>(results);
+                return AutoMapper.Mapper.Map<UserDTO[]>(results);
             }
             catch (Exception)
             {
@@ -47,7 +47,7 @@ namespace SportsClubWeb.Controllers
                 var results = await unitOfWork.UserRepository.GetAllUsersByLastNameAsync(token);
                 if (!results.Any()) return NotFound();
 
-                return _mapper.Map<UserDTO[]>(results);
+                return Mapper.Map<UserDTO[]>(results);
             }
             catch (Exception)
             {
@@ -63,7 +63,7 @@ namespace SportsClubWeb.Controllers
                 var results = await unitOfWork.UserRepository.GetUsersByDateOfBirthRange(start, end);
                 if (!results.Any()) return NotFound();
 
-                return Mapper.Map<UserDTO[]>(results);
+                return AutoMapper.Mapper.Map<UserDTO[]>(results);
             }
             catch (Exception)
             {
@@ -86,5 +86,81 @@ namespace SportsClubWeb.Controllers
         //        return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
         //    }
         //}
+
+        [HttpDelete("{userId}")]
+        public async Task<IActionResult> Delete(int userId)
+        {
+            try
+            {
+                var oldUser = await unitOfWork.UserRepository.GetUserById(userId);
+                if (oldUser == null)
+                {
+                    return NotFound();
+                }
+
+                await unitOfWork.RemoveUser(userId);
+                if (await unitOfWork.SaveChangesAsync())
+                {
+                    return Ok();
+                }
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+
+            return BadRequest("Failed to delete the user");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<UserDTO>> Post(UserDTO dto)
+        {
+            try
+            {
+                var existing = await unitOfWork.UserRepository.GetUserById(dto.UserId);
+                if (existing != null)
+                {
+                    return BadRequest("User already exists");
+                }
+
+                //Link Generator
+
+                var user = Mapper.Map<User>(dto);
+
+                if (await unitOfWork.AddUser(user))
+                {
+                    return Created($"/api/User/{user.UserId}", Mapper.Map<UserDTO>(user));
+                }
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("{userId}")]
+        public async Task<ActionResult<UserDTO>> Put(int userId, UserDTO dto)
+        {
+            try
+            {
+                var oldUser = await unitOfWork.UserRepository.GetUserById(userId);
+                if (oldUser == null)
+                {
+                    return NotFound($"Could not find user with id: {userId}");
+                }
+                Mapper.Map(dto, oldUser);
+
+                if (await unitOfWork.SaveChangesAsync())
+                {
+                    return Mapper.Map<UserDTO>(oldUser);
+                }
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+            return BadRequest();
+        }
     }
 }

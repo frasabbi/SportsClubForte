@@ -82,6 +82,69 @@ namespace SportsClubWeb.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
             }
         }
+        [HttpDelete("{reservationid}")]
+        public async Task<IActionResult> DeleteReservation(int reservationId)
+        {
+            try
+            {
+                var result = await UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationId);
+                if (result == null) return NotFound();
+
+                await UnitOfWork.RemoveReservation(reservationId);
+
+                if(await UnitOfWork.SaveChangesAsync())
+                {
+                    return Ok();
+                }
+                
+            }
+            catch(Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+            return BadRequest("Failed to delete the reservation");
+        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ReservationsDTO>> ModifyReservation(int reservationId,ReservationsDTO reservationsDTO)
+        {
+            try
+            {
+                var result = await UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationId);
+                if (result == null) return NotFound($"Could not found resevation with this id{reservationId}");
+
+                Mapper.Map(reservationsDTO, result);
+
+                if(await UnitOfWork.SaveChangesAsync())
+                {
+                    return Mapper.Map<ReservationsDTO>(result);
+                }
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+            return BadRequest();
+        }
+        [HttpPost]
+        public async Task<ActionResult<ReservationsDTO>> Post(ReservationsDTO reservationsDTO)
+        {
+            try
+            {
+                var exist = await UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationsDTO.ReservationId);
+                if (exist != null) return BadRequest("Id già in uso");
+
+                var newres = Mapper.Map<Reservation>(reservationsDTO);
+                await UnitOfWork.AddReservation(newres);
+                if (await UnitOfWork.SaveChangesAsync())
+                    return Created($"/api/reservations/{reservationsDTO.ReservationId}", Mapper.Map<ReservationsDTO>(newres));
+
+            }
+            catch(Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+            return BadRequest();
+        }
 
     }
 }
