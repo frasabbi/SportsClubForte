@@ -86,5 +86,30 @@ namespace SportsClubWeb.Controllers
         //        return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
         //    }
         //}
+
+        [HttpDelete("{userId}")]
+        public async Task<bool> Delete(int userId)
+        {
+            try
+            {
+                var oldUser= await unitOfWork.UserRepository.GetUserById(userId);
+                if(oldUser==null)
+                {
+                    return NotFound();
+                }
+
+                unitOfWork.RemoveUser(userId);
+                if(await )
+                {
+                    return Ok();
+                }
+            }
+            catch(Exception)
+            {
+                return this.StatusCode(StatusCode.Status500InternalServerError, "Database Failure");
+            }
+
+            return BadRequest("Failed to delete the user");
+        }
     }
 }

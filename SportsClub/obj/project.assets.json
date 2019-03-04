@@ -14944,11 +14944,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Allievo 10\\Documents\\NM\\Aggiornato_01-03_EndDay\\SportsClubForte-master\\SportsClub\\SportsClubWeb.csproj",
+      "projectUniqueName": "C:\\Users\\Allievo 10\\source\\repos\\frasabbi\\SportsClubForte\\SportsClub\\SportsClubWeb.csproj",
       "projectName": "SportsClubWeb",
-      "projectPath": "C:\\Users\\Allievo 10\\Documents\\NM\\Aggiornato_01-03_EndDay\\SportsClubForte-master\\SportsClub\\SportsClubWeb.csproj",
+      "projectPath": "C:\\Users\\Allievo 10\\source\\repos\\frasabbi\\SportsClubForte\\SportsClub\\SportsClubWeb.csproj",
       "packagesPath": "C:\\Users\\Allievo 10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Allievo 10\\Documents\\NM\\Aggiornato_01-03_EndDay\\SportsClubForte-master\\SportsClub\\obj\\",
+      "outputPath": "C:\\Users\\Allievo 10\\source\\repos\\frasabbi\\SportsClubForte\\SportsClub\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -14967,11 +14967,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Allievo 10\\Documents\\NM\\Aggiornato_01-03_EndDay\\SportsClubForte-master\\EF_DB_Layer_\\EF_DB_Layer.csproj": {
-              "projectPath": "C:\\Users\\Allievo 10\\Documents\\NM\\Aggiornato_01-03_EndDay\\SportsClubForte-master\\EF_DB_Layer_\\EF_DB_Layer.csproj"
+            "C:\\Users\\Allievo 10\\source\\repos\\frasabbi\\SportsClubForte\\EF_DB_Layer_\\EF_DB_Layer.csproj": {
+              "projectPath": "C:\\Users\\Allievo 10\\source\\repos\\frasabbi\\SportsClubForte\\EF_DB_Layer_\\EF_DB_Layer.csproj"
             },
-            "C:\\Users\\Allievo 10\\Documents\\NM\\Aggiornato_01-03_EndDay\\SportsClubForte-master\\SportsClubModel_\\SportsClubModel.csproj": {
-              "projectPath": "C:\\Users\\Allievo 10\\Documents\\NM\\Aggiornato_01-03_EndDay\\SportsClubForte-master\\SportsClubModel_\\SportsClubModel.csproj"
+            "C:\\Users\\Allievo 10\\source\\repos\\frasabbi\\SportsClubForte\\SportsClubModel_\\SportsClubModel.csproj": {
+              "projectPath": "C:\\Users\\Allievo 10\\source\\repos\\frasabbi\\SportsClubForte\\SportsClubModel_\\SportsClubModel.csproj"
             }
           }
         }

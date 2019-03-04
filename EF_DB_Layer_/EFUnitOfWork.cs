@@ -73,7 +73,7 @@ namespace EF_DB_Layer
                     if (reservation.IsDoubleReservation())
                     {
                         reservation.Field.Players = 4;
-                        reservation.Price = reservation.Field.Price * 1.5m;
+                        reservation.Price = reservation.Field.Price * 1.5m * (reservation.TimeEnd.Hour - reservation.TimeEnd.Hour);
                     }
                     else
                     {
@@ -149,6 +149,11 @@ namespace EF_DB_Layer
             {
                 return false;
             }
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await context.SaveChangesAsync()) > 0;
         }
 
         public string ToSport(string courtName)
