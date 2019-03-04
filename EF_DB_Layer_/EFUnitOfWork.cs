@@ -60,6 +60,7 @@ namespace EF_DB_Layer
         {
             try
             {
+                //Usare GetUserById?
                 var user = UserRepository.Users.SingleOrDefault(u => u.UserId == reservation.UserId);
                 //Creare Eccezione custom
                 reservation.User = user ?? throw new Exception();
@@ -73,20 +74,24 @@ namespace EF_DB_Layer
                     if (reservation.IsDoubleReservation())
                     {
                         reservation.Field.Players = 4;
-                        reservation.Price = reservation.Field.Price * 1.5m * (reservation.TimeEnd.Hour - reservation.TimeEnd.Hour);
+                        reservation.Price = reservation.Field.Price * ((reservation.TimeEnd.Hour - reservation.TimeStart.Hour) + (reservation.TimeEnd.Minute - reservation.TimeStart.Minute) / 60) * 1.5m;
+                        
                     }
                     else
                     {
-                        reservation.Price = reservation.Field.Price;
+                        reservation.Price = reservation.Field.Price * ((reservation.TimeEnd.Hour - reservation.TimeStart.Hour)+(reservation.TimeEnd.Minute - reservation.TimeStart.Minute)/60);
                     }
+                    user.SpentMoney += reservation.Price;
                 }
                 if (reservation.IsChallenge)
                 {
                     reservation.Challenge = new Challenge(reservation.UserId, reservation.Field.Players);
                     reservation.Challenge.Reservation = reservation;
+                    user.ChallengeNumbers++;
                 }
                 ReservationRepository.AddReservation(reservation);
                 await context.SaveChangesAsync();
+                user.Reservations++;
                 return true;
             }
             catch(DbUpdateException)
