@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\EF_DB_Layer_",
-    "\\EF_DB_Layer_\\obj"
+    "\\SportsClubModel_",
+    "\\SportsClubModel_\\Interfaces"
   ],
-  "SelectedNode": "\\EF_DB_Layer_\\EFUnitOfWork.cs",
+  "SelectedNode": "\\SportsClubModel_\\Interfaces\\IUserRepository.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsClubModel;
 using SportsClubWeb.DTO;
+using Microsoft.AspNetCore.Routing;
+
 
 namespace SportsClubWeb.Controllers
 {
@@ -18,10 +20,11 @@ namespace SportsClubWeb.Controllers
         private readonly IMapper Mapper;
         private readonly LinkGenerator LinkGenerator;
 
-        public UserController(IUnitOfWork unit, IMapper mapper)
+        public UserController(IUnitOfWork unit, IMapper mapper, LinkGenerator linkGenerator)
         {
             unitOfWork = unit;
             Mapper = mapper;
+            LinkGenerator = linkGenerator;
         }
 
         [HttpGet]
@@ -126,6 +129,11 @@ namespace SportsClubWeb.Controllers
                 }
 
                 //Link Generator
+                var location = LinkGenerator.GetPathByAction("Get", "User", new {id = dto.UserId});
+                if(string.IsNullOrWhiteSpace(location))
+                {
+                    return BadRequest("Could not use current Id");
+                }
 
                 var user = Mapper.Map<User>(dto);
 

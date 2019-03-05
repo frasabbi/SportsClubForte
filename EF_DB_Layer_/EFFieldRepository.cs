@@ -34,5 +34,10 @@ namespace EF_DB_Layer
             var field = context.Fields.Where(x => x.FieldId == fieldId).First();
             context.Remove(field);
         }
+
+        public IQueryable<Field> GetAllFields()
+        {
+            return context.Fields;
+        }
     }
 }
