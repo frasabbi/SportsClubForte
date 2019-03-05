@@ -22,12 +22,13 @@ namespace SportsClubWeb.Controllers
             Mapper = mapper;
         }
 
+        //Devono essere asincroni? In che modo se metto le Get sincrone?
         [HttpGet]
         public async Task<ActionResult<ReservationsDTO[]>> Get()
         {
             try
             {
-                var results = await UnitOfWork.ReservationRepository.GetAllReservationsAsync();
+                var results = UnitOfWork.ReservationRepository.GetAllReservationsAsync();
 
                 return Mapper.Map<ReservationsDTO[]>(results);
             }
@@ -42,7 +43,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = await UnitOfWork.ReservationRepository.GetReservationsByField(fieldId);
+                var results = UnitOfWork.ReservationRepository.GetReservationsByField(fieldId);
 
                 return Mapper.Map<ReservationsDTO[]>(results);
             }
@@ -52,13 +53,12 @@ namespace SportsClubWeb.Controllers
             }
         }
 
-        //La soluzione è cambiare il nome della funzione?
         [HttpGet("user")]
         public async Task<ActionResult<ReservationsDTO[]>> GetByUser(int userId)
         {
             try
             {
-                var results = await UnitOfWork.ReservationRepository.GetReservationsByUserId(userId);
+                var results = UnitOfWork.ReservationRepository.GetReservationsByUserId(userId);
 
                 return Mapper.Map<ReservationsDTO[]>(results);
             }
@@ -73,7 +73,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = await UnitOfWork.ReservationRepository.GetReservationsByDate(start, end);
+                var results = UnitOfWork.ReservationRepository.GetReservationsByDate(start, end);
 
                 return Mapper.Map<ReservationsDTO[]>(results);
             }
@@ -87,10 +87,10 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var result = await UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationId);
+                var result = UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationId);
                 if (result == null) return NotFound();
 
-                await UnitOfWork.RemoveReservation(reservationId);
+                await UnitOfWork.RemoveReservationAsync(reservationId);
 
                 if(await UnitOfWork.SaveChangesAsync())
                 {
@@ -109,7 +109,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var result = await UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationId);
+                var result = UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationId);
                 if (result == null) return NotFound($"Could not found resevation with this id{reservationId}");
 
                 Mapper.Map(reservationsDTO, result);
@@ -130,11 +130,11 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var exist = await UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationsDTO.ReservationId);
+                var exist = UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationsDTO.ReservationId);
                 if (exist != null) return BadRequest("Id già in uso");
 
                 var newres = Mapper.Map<Reservation>(reservationsDTO);
-                await UnitOfWork.AddReservation(newres);
+                await UnitOfWork.AddReservationAsync(newres);
                 if (await UnitOfWork.SaveChangesAsync())
                     return Created($"/api/reservations/{reservationsDTO.ReservationId}", Mapper.Map<ReservationsDTO>(newres));
 

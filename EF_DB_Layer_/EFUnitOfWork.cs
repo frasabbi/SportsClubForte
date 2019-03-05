@@ -10,6 +10,7 @@ namespace EF_DB_Layer
 {
     public class EFUnitOfWork : IUnitOfWork
     {
+        //I Repository diventano private
         public IChallengeRepository ChallengeRepository { get; set; }
         public IFieldRepository FieldRepository { get; set; }
         public IReservationRepository ReservationRepository { get; set; }
@@ -26,37 +27,33 @@ namespace EF_DB_Layer
         }
 
         //I metodi non restituiscono bool
-        public async Task<bool> AddUser(User user)
+        public async Task AddUserAsync(User user)
         {
             try
             {
                 UserRepository.AddUser(user);
                 await context.SaveChangesAsync();
-                return true;
                 
             }
             catch(DbUpdateException)
             {
-                return false;
             }
         }
 
-        public async Task<bool> RemoveUser(int userId)
+        public async Task RemoveUserAsync(int userId)
         {
             try
             {
                 UserRepository.RemoveUser(userId);
                 await context.SaveChangesAsync();
-                return true;
 
             }
             catch (DbUpdateException)
             {
-                return false;
             }
         }
 
-        public async Task<bool> AddReservation(Reservation reservation)
+        public async Task AddReservationAsync(Reservation reservation)
         {
             try
             {
@@ -92,67 +89,70 @@ namespace EF_DB_Layer
                 ReservationRepository.AddReservation(reservation);
                 await context.SaveChangesAsync();
                 user.Reservations++;
-                return true;
             }
             catch(DbUpdateException)
             {
-                return false;
             }
         }
 
-        public async Task<bool> RemoveReservation(int reservationId)
+        public async Task RemoveReservationAsync(int reservationId)
         {
             try
             {
                 ReservationRepository.RemoveReservation(reservationId);
                 await context.SaveChangesAsync();
-                return true;
             }
             catch (DbUpdateException)
             {
-                return false;
             }
         }
 
-        public async Task<bool> AddField(Field field)
+        public async Task AddFieldAsync(Field field)
         {
             try
             {
                 FieldRepository.AddField(field);
                 await context.SaveChangesAsync();
-                return true;
             }
             catch (DbUpdateException)
             {
-                return false;
             }
         }
 
-        public async Task<bool> RemoveField(int fieldId)
+        public async Task RemoveFieldAsync(int fieldId)
         {
             try
             {
                 FieldRepository.RemoveField(fieldId);
                 await context.SaveChangesAsync();
-                return true;
             }
             catch (DbUpdateException)
             {
-                return false;
             }
         }
 
-        public async Task<bool> RemoveChallenge(int challengeId)
+        public async Task AddChallengeAsync(Challenge challenge)
+        {
+            try
+            {
+                ChallengeRepository.AddChallenge(challenge);
+                await context.SaveChangesAsync();
+            }
+            catch(DbUpdateException)
+            {
+            }
+        }
+
+        public async Task RemoveChallengeAsync(int challengeId)
         {
             try
             {
                 ChallengeRepository.RemoveChallenge(challengeId);
+                //Uso il Metodo Task<bool> SaveChangesAsync creato da noi?
                 await context.SaveChangesAsync();
-                return true;
             }
             catch (DbUpdateException)
             {
-                return false;
             }
         }
 
@@ -174,6 +174,11 @@ namespace EF_DB_Layer
                 sport = courtName.Replace("Field", "");
             }
             return sport;
+        }
+
+        public async Task<User[]> GetAllUsersAsync()
+        {
+            return await UserRepository.GetAllUsers().ToArrayAsync();
         }
     }
 }

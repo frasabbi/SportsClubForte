@@ -168,3 +168,11 @@ C:\Users\Allievo 10\Source\Repos\frasabbi\SportsClubForte\SportsClub\bin\Debug\n
 C:\Users\Allievo 10\Source\Repos\frasabbi\SportsClubForte\SportsClub\bin\Debug\netcoreapp2.1\SportsClubModel.pdb
 C:\Users\Allievo 10\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.RazorTargetAssemblyInfo.cache
 C:\Users\Allievo 10\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.csproj.CopyComplete
+C:\Users\stefa\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.csprojAssemblyReference.cache
+C:\Users\stefa\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.csproj.CoreCompileInputs.cache
+C:\Users\stefa\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.RazorAssemblyInfo.cache
+C:\Users\stefa\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.RazorAssemblyInfo.cs
+C:\Users\stefa\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.AssemblyInfoInputs.cache
+C:\Users\stefa\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.AssemblyInfo.cs
+C:\Users\stefa\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.dll
+C:\Users\stefa\Source\Repos\frasabbi\SportsClubForte\SportsClub\obj\Debug\netcoreapp2.1\SportsClubWeb.pdb

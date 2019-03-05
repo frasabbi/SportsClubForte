@@ -22,7 +22,7 @@ namespace EF_DB_Layer_Tests
                 var count = unitOfWork.UserRepository.Users.Count();
 
                 var user = new User("Stefano", "Beltrami", DateTime.Now, "Via Vai");
-                var result = unitOfWork.AddUser(user);
+                var result = unitOfWork.AddUserAsync(user);
 
                 Assert.Equal(count + 1, context.Users.Count());                Assert.Equal(user.LastName, unitOfWork.UserRepository.Users.Last().LastName);                      }
         }

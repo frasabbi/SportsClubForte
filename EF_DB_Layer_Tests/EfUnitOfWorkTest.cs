@@ -51,14 +51,14 @@ namespace EF_DB_Layer_Tests
 
                 Reservation testRes = new Reservation(user2.UserId,field2.FieldId,DateTime.Now, "17:00", "18:00",true, false);
 
-                unitOfWork.AddReservation(testRes);
+                unitOfWork.AddReservationAsync(testRes);
 
                 Assert.Equal(1, unitOfWork.ReservationRepository.Reservations.Where(r => r.ReservationId == testRes.ReservationId).Count());
                 Assert.True(testRes.IsDouble);
                 Assert.NotEmpty(unitOfWork.ReservationRepository.Reservations);
 
                 var testResWithCh = new Reservation(user2.UserId, field2.FieldId, DateTime.Now, "19:00", "20:00", false, true);
-                var resultAdd2 = unitOfWork.AddReservation(testResWithCh);
+                var resultAdd2 = unitOfWork.AddReservationAsync(testResWithCh);
 
                 
                 Assert.NotNull(testResWithCh.Challenge);

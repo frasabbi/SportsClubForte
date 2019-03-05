@@ -41,7 +41,7 @@ namespace SportsClub.Controllers
         {
             try
             {
-                var existing = await UnitOfWork.FieldRepository.GetFieldById(dto.FieldId);
+                var existing = UnitOfWork.FieldRepository.GetFieldById(dto.FieldId);
                 if (existing != null)
                 {
                     return BadRequest("Moniker in Use");
@@ -58,7 +58,7 @@ namespace SportsClub.Controllers
 
                 // Create a new Field
                 var field = Mapper.Map<Field>(dto);
-                await UnitOfWork.AddField(field);
+                await UnitOfWork.AddFieldAsync(field);
                 if (await UnitOfWork.SaveChangesAsync())
                 {
                     return Created($"/api/camps/{field.FieldId}", Mapper.Map<FieldDTO>(field));
@@ -78,7 +78,7 @@ namespace SportsClub.Controllers
         {
             try
             {
-                var oldField = await UnitOfWork.FieldRepository.GetFieldById(fieldId);
+                var oldField = UnitOfWork.FieldRepository.GetFieldById(fieldId);
                 if (oldField == null)
                 {
                     return NotFound($"Could not find field with moniker of {fieldId}");
@@ -104,10 +104,10 @@ namespace SportsClub.Controllers
         {
             try
             {
-                var oldField = await UnitOfWork.FieldRepository.GetFieldById(fieldId);
+                var oldField = UnitOfWork.FieldRepository.GetFieldById(fieldId);
                 if (oldField == null) return NotFound();
 
-                await UnitOfWork.RemoveField(oldField.FieldId);
+                await UnitOfWork.RemoveFieldAsync(oldField.FieldId);
 
                 if (await UnitOfWork.SaveChangesAsync())
                 {

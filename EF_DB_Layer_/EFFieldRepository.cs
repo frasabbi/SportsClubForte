@@ -24,10 +24,9 @@ namespace EF_DB_Layer
             context.Add(field);
         }
 
-        public async Task<Field> GetFieldById(int fieldId)
+        public Field GetFieldById(int fieldId)
         {
-            var field = await context.Fields.Where(r => r.FieldId == fieldId).SingleAsync();
-            return field;
+            return context.Fields.SingleOrDefault(r => r.FieldId == fieldId);
         }
 
         public void RemoveField(int fieldId)

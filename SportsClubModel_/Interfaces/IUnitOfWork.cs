@@ -12,13 +12,15 @@ namespace SportsClubModel
         IReservationRepository ReservationRepository { get; set; }
         IUserRepository UserRepository { get; set; }
 
-        Task<bool> AddUser(User user);
-        Task<bool> AddReservation(Reservation reservation);
-        Task<bool> AddField(Field field);
-        Task<bool> RemoveUser(int userId);
-        Task<bool> RemoveReservation(int reservationId);
-        Task<bool> RemoveChallenge(int challengeId);
+        Task AddUserAsync(User user);
+        Task AddReservationAsync(Reservation reservation);
+        Task AddFieldAsync(Field field);
+        Task AddChallengeAsync(Challenge challenge);
+        Task RemoveUserAsync(int userId);
+        Task RemoveReservationAsync(int reservationId);
+        Task RemoveFieldAsync(int fieldId);
+        Task RemoveChallengeAsync(int challengeId);
         Task<bool> SaveChangesAsync();
-        Task<bool> RemoveField(int fieldId);
+        Task<User[]> GetAllUsersAsync();
     }
 }

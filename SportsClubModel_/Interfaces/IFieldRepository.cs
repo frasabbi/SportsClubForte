@@ -11,7 +11,7 @@ namespace SportsClubModel
     {
         IQueryable<Field> Fields { get; }
         void AddField(Field field);
-        Task<Field> GetFieldById(int fieldId);
         void RemoveField(int fieldId);
+        Field GetFieldById(int fieldId);
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SportsClubModel;
 using EF_DB_Layer;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SportsClubWeb
 {
@@ -34,7 +35,8 @@ namespace SportsClubWeb
             services.AddTransient<IUserRepository, EFUserRepository>();
             /*services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();*/
-            services.AddMvc();
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             /*services.AddMemoryCache();
             services.AddSession();*/
 
