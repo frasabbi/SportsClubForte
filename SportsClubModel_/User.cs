@@ -21,7 +21,7 @@ namespace SportsClubModel
         public string Address { get; set; }
         public int Reservations { get; set; }
         public decimal SpentMoney { get; set; }
-        public int ChallengeNumbers { get; set; }
+        public int Challenge { get; set; }
         public int Wins { get; set; }
 
         public User() { }
@@ -35,7 +35,7 @@ namespace SportsClubModel
             Address = address;
             Reservations = 0;
             SpentMoney = 0;
-            ChallengeNumbers = 0;
+            Challenge = 0;
             Wins = 0;
         }
      }

@@ -12,10 +12,8 @@ namespace SportsClubModel
         IQueryable<User> Users { get; }
         void AddUser(User user);
         void RemoveUser(int userId);
-        IQueryable<User> GetAllUsers();
-        IQueryable<User> GetAllUsersByLastNameAsync(string token);
+        IQueryable<User> GetAllUsersByLastName(string token);
         IQueryable<User> GetUsersByDateOfBirthRange(DateTime start, DateTime end);
-        User GetUserById(int userId);
-        //Task<IQueryable<User>> GetBestWinner();
+        Task<User> GetUserByIdAsync(int userId);
     }
 }

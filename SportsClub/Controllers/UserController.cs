@@ -9,18 +9,18 @@ using Microsoft.EntityFrameworkCore;
 using SportsClubModel;
 using SportsClubWeb.DTO;
 using Microsoft.AspNetCore.Routing;
-
+using SportsClubModel.Interfaces;
 
 namespace SportsClubWeb.Controllers
 {
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IUserUnitOfWork unitOfWork;
         private readonly IMapper Mapper;
         private readonly LinkGenerator LinkGenerator;
 
-        public UserController(IUnitOfWork unit, IMapper mapper, LinkGenerator linkGenerator)
+        public UserController(IUserUnitOfWork unit, IMapper mapper, LinkGenerator linkGenerator)
         {
             unitOfWork = unit;
             Mapper = mapper;
@@ -32,15 +32,16 @@ namespace SportsClubWeb.Controllers
         {
             //User nicoletta = new User(firstName:"Nicoletta", lastName:"Magi", birthdate:new DateTime(1991 / 11 / 5), address:"Via Paleocapa");
             try
+
             {
                 var results = await unitOfWork.GetAllUsersAsync();
                 if (!results.Any()) return NotFound();
 
-                return AutoMapper.Mapper.Map<UserDTO[]>(results);
+                return Mapper.Map<UserDTO[]>(results);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, e.Message + e.StackTrace);
             }
         }
 
@@ -49,7 +50,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = unitOfWork.UserRepository.GetAllUsersByLastNameAsync(token);
+                var results = await unitOfWork.GetAllUsersByLastNameAsync(token);
                 if (!results.Any()) return NotFound();
 
                 return Mapper.Map<UserDTO[]>(results);
@@ -65,10 +66,10 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = unitOfWork.UserRepository.GetUsersByDateOfBirthRange(start, end);
+                var results = await unitOfWork.GetUsersByDateOfBirthRangeAsync(start, end);
                 if (!results.Any()) return NotFound();
 
-                return AutoMapper.Mapper.Map<UserDTO[]>(results);
+                return Mapper.Map<UserDTO[]>(results);
             }
             catch (Exception)
             {
@@ -97,7 +98,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var oldUser = unitOfWork.UserRepository.GetUserById(userId);
+                var oldUser = await unitOfWork.GetUserByIdAsync(userId);
                 if (oldUser == null)
                 {
                     return NotFound();
@@ -122,7 +123,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var existing = unitOfWork.UserRepository.GetUserById(dto.UserId);
+                var existing = await unitOfWork.GetUserByIdAsync(dto.UserId);
                 if (existing != null)
                 {
                     return BadRequest("User already exists");
@@ -140,7 +141,7 @@ namespace SportsClubWeb.Controllers
                 //Da risolvere
                 await unitOfWork.AddUserAsync(user);
                 
-                return Created($"/api/User/{user.UserId}", Mapper.Map<UserDTO>(user));
+                return Created($"/api/users/{user.UserId}", Mapper.Map<UserDTO>(user));
                 
             }
             catch (Exception)
@@ -155,7 +156,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var oldUser = unitOfWork.UserRepository.GetUserById(userId);
+                var oldUser = await unitOfWork.GetUserByIdAsync(userId);
                 if (oldUser == null)
                 {
                     return NotFound($"Could not find user with id: {userId}");

@@ -12,6 +12,9 @@ namespace SportsClubModel
         IQueryable<Field> Fields { get; }
         void AddField(Field field);
         void RemoveField(int fieldId);
-        Field GetFieldById(int fieldId);
+        Task<Field> GetFieldByIdAsync(int fieldId);
+        IQueryable<Field> GetAllFieldsBySurface(Surfaces surface);
+        IQueryable<Field> GetAllFieldsByPrice(decimal price);
+
     }
 }

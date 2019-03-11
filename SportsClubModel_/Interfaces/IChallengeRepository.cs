@@ -11,6 +11,7 @@ namespace SportsClubModel
         IQueryable<Challenge> Challenges { get; }
         void AddChallenge(Challenge challenge);
         void RemoveChallenge(int challengeId);
-        Challenge GetChallengeById(int challengeId);
+        Task<Challenge> GetChallengeByIdAsync(int challengeId);
+
     }
 }

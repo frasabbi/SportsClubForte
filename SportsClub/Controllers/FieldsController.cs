@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using SportsClubModel;
+using SportsClubModel.Interfaces;
 using SportsClubWeb.DTO;
 using System;
 using System.Threading.Tasks;
@@ -13,10 +14,10 @@ namespace SportsClub.Controllers
     [ApiController]
     public class FieldsController : ControllerBase
     {
-        private readonly IUnitOfWork UnitOfWork;
+        private readonly IFieldUnitOfWork UnitOfWork;
         private readonly IMapper Mapper;
 
-        public FieldsController(IUnitOfWork unitOfWork, IMapper mapper)
+        public FieldsController(IFieldUnitOfWork unitOfWork, IMapper mapper)
         {
             UnitOfWork = unitOfWork;
             Mapper = mapper;
@@ -41,7 +42,7 @@ namespace SportsClub.Controllers
         {
             try
             {
-                var existing = UnitOfWork.FieldRepository.GetFieldById(dto.FieldId);
+                var existing = await UnitOfWork.GetFieldByIdAsync(dto.FieldId);
                 if (existing != null)
                 {
                     return BadRequest("Moniker in Use");
@@ -59,10 +60,7 @@ namespace SportsClub.Controllers
                 // Create a new Field
                 var field = Mapper.Map<Field>(dto);
                 await UnitOfWork.AddFieldAsync(field);
-                if (await UnitOfWork.SaveChangesAsync())
-                {
-                    return Created($"/api/camps/{field.FieldId}", Mapper.Map<FieldDTO>(field));
-                }
+                return Created($"/api/fields/{field.FieldId}", Mapper.Map<FieldDTO>(field));
 
             }
             catch (Exception)
@@ -78,7 +76,7 @@ namespace SportsClub.Controllers
         {
             try
             {
-                var oldField = UnitOfWork.FieldRepository.GetFieldById(fieldId);
+                var oldField = await UnitOfWork.GetFieldByIdAsync(fieldId);
                 if (oldField == null)
                 {
                     return NotFound($"Could not find field with moniker of {fieldId}");
@@ -104,7 +102,7 @@ namespace SportsClub.Controllers
         {
             try
             {
-                var oldField = UnitOfWork.FieldRepository.GetFieldById(fieldId);
+                var oldField = await UnitOfWork.GetFieldByIdAsync(fieldId);
                 if (oldField == null) return NotFound();
 
                 await UnitOfWork.RemoveFieldAsync(oldField.FieldId);

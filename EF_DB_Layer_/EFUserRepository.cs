@@ -30,22 +30,11 @@ namespace EF_DB_Layer
             context.Remove(user);
         }
 
-        public IQueryable<User> GetAllUsers()
-        {
-            return context.Users;
-        }
-
-        public IQueryable<User> GetAllUsersByLastNameAsync(string token)
+        public IQueryable<User> GetAllUsersByLastName(string token)
         {
             return context.Users.Where(r => r.LastName.Contains(token));
 
         }
-
-        //public IQueryable<User> GetBestWinner()
-        //{
-        //    var max = context.Users.Max(r => r.Wins);
-        //    return await context.Users.Where(r => r.Wins == max).ToArrayAsync();
-        //}
 
         public IQueryable<User> GetUsersByDateOfBirthRange(DateTime start, DateTime end)
         {
@@ -55,9 +44,9 @@ namespace EF_DB_Layer
             return context.Users.Where(r => r.BirthDate > start && r.BirthDate < end);
         }
 
-        public User GetUserById(int userId)
+        public async Task<User> GetUserByIdAsync(int userId)
         {
-            return context.Users.SingleOrDefault(u => u.UserId == userId);
+            return await context.Users.SingleOrDefaultAsync(u => u.UserId == userId);
         }
     }
 }

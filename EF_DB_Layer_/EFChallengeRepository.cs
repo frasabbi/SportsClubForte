@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SportsClubModel;
 
 namespace EF_DB_Layer
@@ -30,9 +31,20 @@ namespace EF_DB_Layer
             context.Remove(chal);
         }
 
-        public Challenge GetChallengeById(int challengeId)
+        public async Task<Challenge> GetChallengeByIdAsync(int challengeId)
         {
-            return context.Challenges.SingleOrDefault(ch => ch.ChallengeId == challengeId);
+            return await context.Challenges.SingleOrDefaultAsync(ch => ch.ChallengeId == challengeId);
         }
+        
+        //public void AddTeam(int userId,int reservationId)
+        //{
+        //    User user = context.Users.SingleOrDefault(u => u.UserId == userId);
+        //    Reservation r = context.Reservations.SingleOrDefault(re=>re.ReservationId==reservationId);
+        //    for(int i=0;i<r.Field.Players/2;i++)
+        //    {
+                
+        //    }
+             
+        //}
     }
 }

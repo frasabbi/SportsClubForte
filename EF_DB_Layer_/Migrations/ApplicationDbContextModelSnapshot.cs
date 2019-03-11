@@ -15,7 +15,7 @@ namespace EF_DB_Layer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
+                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -110,8 +110,6 @@ namespace EF_DB_Layer.Migrations
 
                     b.Property<int?>("ChallengeId");
 
-                    b.Property<int?>("ChallengeId1");
-
                     b.Property<int>("ChallengeNumbers");
 
                     b.Property<DateTime>("DateOfRegistration");
@@ -132,17 +130,12 @@ namespace EF_DB_Layer.Migrations
 
                     b.HasIndex("ChallengeId");
 
-                    b.HasIndex("ChallengeId1");
-
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("SportsClubModel.PaddleCourt", b =>
                 {
                     b.HasBaseType("SportsClubModel.Field");
-
-
-                    b.ToTable("PaddleCourt");
 
                     b.HasDiscriminator().HasValue(1);
                 });
@@ -153,17 +146,12 @@ namespace EF_DB_Layer.Migrations
 
                     b.Property<bool>("IsSeven");
 
-                    b.ToTable("SoccerField");
-
                     b.HasDiscriminator().HasValue(2);
                 });
 
             modelBuilder.Entity("SportsClubModel.TennisCourt", b =>
                 {
                     b.HasBaseType("SportsClubModel.Field");
-
-
-                    b.ToTable("TennisCourt");
 
                     b.HasDiscriminator().HasValue(0);
                 });
@@ -197,12 +185,8 @@ namespace EF_DB_Layer.Migrations
             modelBuilder.Entity("SportsClubModel.User", b =>
                 {
                     b.HasOne("SportsClubModel.Challenge")
-                        .WithMany("Team1")
+                        .WithMany("Brawlers")
                         .HasForeignKey("ChallengeId");
-
-                    b.HasOne("SportsClubModel.Challenge")
-                        .WithMany("Team2")
-                        .HasForeignKey("ChallengeId1");
                 });
 #pragma warning restore 612, 618
         }

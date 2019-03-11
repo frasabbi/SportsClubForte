@@ -24,20 +24,25 @@ namespace EF_DB_Layer
             context.Add(field);
         }
 
-        public Field GetFieldById(int fieldId)
+        public async Task<Field> GetFieldByIdAsync(int fieldId)
         {
-            return context.Fields.SingleOrDefault(r => r.FieldId == fieldId);
+            return await context.Fields.SingleOrDefaultAsync(r => r.FieldId == fieldId);
+        }
+
+        public IQueryable<Field> GetAllFieldsByPrice(decimal price)
+        {
+            return context.Fields.Where(p => p.Price == price);
+        }
+
+        public IQueryable<Field> GetAllFieldsBySurface(Surfaces surface)
+        {
+            return context.Fields.Where(s => s.Surface == surface);
         }
 
         public void RemoveField(int fieldId)
         {
             var field = context.Fields.Where(x => x.FieldId == fieldId).First();
             context.Remove(field);
-        }
-
-        public IQueryable<Field> GetAllFields()
-        {
-            return context.Fields;
         }
     }
 }

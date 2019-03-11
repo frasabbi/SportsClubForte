@@ -5,6 +5,7 @@ using SportsClubModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 
 namespace EF_DB_Layer
@@ -35,10 +36,16 @@ namespace EF_DB_Layer
             //    .HasForeignKey<Challenge>(c => c.ReservationId)
             //    .IsRequired().OnDelete(DeleteBehavior.Restrict);
 
+           
+
+
             modelbuilder.Entity<Reservation>()
                 .HasOne(r => r.Challenge)
                 .WithOne(c => c.Reservation)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            
+                
         }
     }
 

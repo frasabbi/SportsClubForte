@@ -11,6 +11,9 @@ using SportsClubModel;
 using EF_DB_Layer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
+using SportsClubModel.Interfaces;
+using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 
 namespace SportsClubWeb
 {
@@ -21,11 +24,23 @@ namespace SportsClubWeb
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "ciccio";
+
         public IConfiguration Configuration { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
+
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["Data:SportsClub:ConnectionString"]));
@@ -33,6 +48,11 @@ namespace SportsClubWeb
             services.AddTransient<IFieldRepository, EFFieldRepository>();
             services.AddTransient<IReservationRepository, EFReservationRepository>();
             services.AddTransient<IUserRepository, EFUserRepository>();
+            services.AddTransient<IChallengeUnitOfWork, EFChallengeUnitOfWork>();
+            services.AddTransient<IFieldUnitOfWork, EFFieldUnitOfWork>();
+            services.AddTransient<IReservationUnitOfWork, EFReservationUnitOfWork>();
+            services.AddTransient<IUserUnitOfWork, EFUserUnitOfWork>();
+            services.AddAutoMapper();
             /*services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();*/
             services.AddMvc()
@@ -49,7 +69,7 @@ namespace SportsClubWeb
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseMvc();
         }
     }

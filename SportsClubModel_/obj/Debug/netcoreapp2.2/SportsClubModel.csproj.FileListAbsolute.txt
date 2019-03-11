@@ -1,0 +1,33 @@
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.deps.json
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.runtimeconfig.json
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.runtimeconfig.dev.json
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.csproj.CoreCompileInputs.cache
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.AssemblyInfoInputs.cache
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.AssemblyInfo.cs
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\Allievo 9\Documents\Gianluca Marino\Aggiornato_08-03_StartDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.csprojAssemblyReference.cache
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.deps.json
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.runtimeconfig.json
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.runtimeconfig.dev.json
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.csprojAssemblyReference.cache
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.csproj.CoreCompileInputs.cache
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.AssemblyInfoInputs.cache
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.AssemblyInfo.cs
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\niky\Desktop\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.deps.json
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.runtimeconfig.json
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.runtimeconfig.dev.json
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\bin\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.csproj.CoreCompileInputs.cache
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.AssemblyInfoInputs.cache
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.AssemblyInfo.cs
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\SportsClubModel_\obj\Debug\netcoreapp2.2\SportsClubModel.csprojAssemblyReference.cache

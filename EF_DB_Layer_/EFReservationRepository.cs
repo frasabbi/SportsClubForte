@@ -37,12 +37,6 @@ namespace EF_DB_Layer
             context.Reservations.Remove(res);
         }
 
-        //Da rivedere
-        public IQueryable<Reservation> GetAllReservationsAsync()
-        {
-            return context.Reservations.Include(r => r.Challenge);
-        }
-
         public IQueryable<Reservation> GetReservationsByField(int fieldId)
         {
            return context.Reservations.Include(r => r.Challenge).Where(r => r.FieldId == fieldId);
@@ -61,10 +55,14 @@ namespace EF_DB_Layer
             return context.Reservations.Include(r => r.Challenge).Where(r => r.Date > start && r.Date < end);
         }
 
-        public Reservation GetReservationByReservationId(int reservationId)
+        public async Task<Reservation> GetReservationByReservationIdAsync(int reservationId)
         {
-            return context.Reservations.Include(r => r.Challenge).SingleOrDefault(r => r.ReservationId == reservationId);
+            return await context.Reservations.Include(r => r.Challenge).SingleOrDefaultAsync(r => r.ReservationId == reservationId);
         }
 
+        public IQueryable<Reservation> GetAllReservationsWithChallenges()
+        {
+            return context.Reservations.Include(r => r.Challenge);
+        }
     }
 }

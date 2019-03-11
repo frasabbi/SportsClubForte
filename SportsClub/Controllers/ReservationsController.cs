@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SportsClubModel;
+using SportsClubModel.Interfaces;
 using SportsClubWeb.DTO;
 
 namespace SportsClubWeb.Controllers
@@ -13,10 +14,10 @@ namespace SportsClubWeb.Controllers
     [Route("api/[controller]")]
     public class ReservationsController : ControllerBase
     {
-        private readonly IUnitOfWork UnitOfWork;
+        private readonly IReservationUnitOfWork UnitOfWork;
         private readonly IMapper Mapper;
 
-        public ReservationsController(IUnitOfWork unitOfWork, IMapper mapper)
+        public ReservationsController(IReservationUnitOfWork unitOfWork, IMapper mapper)
         {
             UnitOfWork = unitOfWork;
             Mapper = mapper;
@@ -28,7 +29,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = UnitOfWork.ReservationRepository.GetAllReservationsAsync();
+                var results = await UnitOfWork.GetAllReservationsAsync();
 
                 return Mapper.Map<ReservationsDTO[]>(results);
             }
@@ -43,7 +44,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = UnitOfWork.ReservationRepository.GetReservationsByField(fieldId);
+                var results = await UnitOfWork.GetReservationsByFieldAsync(fieldId);
 
                 return Mapper.Map<ReservationsDTO[]>(results);
             }
@@ -58,7 +59,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = UnitOfWork.ReservationRepository.GetReservationsByUserId(userId);
+                var results = await UnitOfWork.GetReservationsByUserIdAsync(userId);
 
                 return Mapper.Map<ReservationsDTO[]>(results);
             }
@@ -73,7 +74,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = UnitOfWork.ReservationRepository.GetReservationsByDate(start, end);
+                var results = await UnitOfWork.GetReservationsByDateAsync(start, end);
 
                 return Mapper.Map<ReservationsDTO[]>(results);
             }
@@ -87,7 +88,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var result = UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationId);
+                var result = await UnitOfWork.GetReservationByReservationIdAsync(reservationId);
                 if (result == null) return NotFound();
 
                 await UnitOfWork.RemoveReservationAsync(reservationId);
@@ -109,7 +110,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var result = UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationId);
+                var result = await UnitOfWork.GetReservationByReservationIdAsync(reservationId);
                 if (result == null) return NotFound($"Could not found resevation with this id{reservationId}");
 
                 Mapper.Map(reservationsDTO, result);
@@ -130,7 +131,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var exist = UnitOfWork.ReservationRepository.GetReservationByReservationId(reservationsDTO.ReservationId);
+                var exist = await UnitOfWork.GetReservationByReservationIdAsync(reservationsDTO.ReservationId);
                 if (exist != null) return BadRequest("Id già in uso");
 
                 var newres = Mapper.Map<Reservation>(reservationsDTO);
