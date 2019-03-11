@@ -36,7 +36,8 @@ namespace EF_DB_Layer
             //    .HasForeignKey<Challenge>(c => c.ReservationId)
             //    .IsRequired().OnDelete(DeleteBehavior.Restrict);
 
-           
+            modelbuilder.Entity<User>()
+                 .Ignore(u=>u.Challenge);
 
 
             modelbuilder.Entity<Reservation>()

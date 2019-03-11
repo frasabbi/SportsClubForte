@@ -110,8 +110,6 @@ namespace EF_DB_Layer.Migrations
 
                     b.Property<int?>("ChallengeId");
 
-                    b.Property<int>("ChallengeNumbers");
-
                     b.Property<DateTime>("DateOfRegistration");
 
                     b.Property<string>("FirstName")

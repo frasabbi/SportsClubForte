@@ -40,3 +40,17 @@ C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\EF_DB_Layer_\
 C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\EF_DB_Layer_\bin\Debug\netcoreapp2.2\SportsClubModel.dll
 C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\EF_DB_Layer_\bin\Debug\netcoreapp2.2\SportsClubModel.pdb
 C:\Users\Allievo 12\Desktop\Progetto_10_03\Aggiornato_08-03_EndDay\EF_DB_Layer_\obj\Debug\netcoreapp2.2\EF_DB_Layer.csproj.CopyComplete
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\obj\Debug\netcoreapp2.2\EF_DB_Layer.csprojAssemblyReference.cache
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\obj\Debug\netcoreapp2.2\EF_DB_Layer.csproj.CoreCompileInputs.cache
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\obj\Debug\netcoreapp2.2\EF_DB_Layer.AssemblyInfoInputs.cache
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\obj\Debug\netcoreapp2.2\EF_DB_Layer.AssemblyInfo.cs
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\obj\Debug\netcoreapp2.2\EF_DB_Layer.dll
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\obj\Debug\netcoreapp2.2\EF_DB_Layer.pdb
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\bin\Debug\netcoreapp2.2\EF_DB_Layer.deps.json
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\bin\Debug\netcoreapp2.2\EF_DB_Layer.runtimeconfig.json
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\bin\Debug\netcoreapp2.2\EF_DB_Layer.runtimeconfig.dev.json
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\bin\Debug\netcoreapp2.2\EF_DB_Layer.dll
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\bin\Debug\netcoreapp2.2\EF_DB_Layer.pdb
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\bin\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\bin\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_\obj\Debug\netcoreapp2.2\EF_DB_Layer.csproj.CopyComplete

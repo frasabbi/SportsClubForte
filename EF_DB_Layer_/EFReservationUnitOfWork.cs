@@ -56,7 +56,7 @@ namespace EF_DB_Layer
                 {
                     reservation.Challenge = new Challenge(reservation.UserId, reservation.Field.Players);
                     reservation.Challenge.Reservation = reservation;
-                    user.ChallengeNumbers++;
+                    user.Challenge++;
                 }
                 reservationRepository.AddReservation(reservation);
                 await context.SaveChangesAsync();
