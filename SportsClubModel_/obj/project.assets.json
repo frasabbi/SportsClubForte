@@ -14221,11 +14221,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\SportsClubModel_\\SportsClubModel.csproj",
+      "projectUniqueName": "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\SportsClubModel_\\SportsClubModel.csproj",
       "projectName": "SportsClubModel",
-      "projectPath": "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\SportsClubModel_\\SportsClubModel.csproj",
+      "projectPath": "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\SportsClubModel_\\SportsClubModel.csproj",
       "packagesPath": "C:\\Users\\Allievo 12\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\SportsClubModel_\\obj\\",
+      "outputPath": "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\SportsClubModel_\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

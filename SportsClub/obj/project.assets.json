@@ -15367,11 +15367,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\SportsClub\\SportsClubWeb.csproj",
+      "projectUniqueName": "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\SportsClub\\SportsClubWeb.csproj",
       "projectName": "SportsClubWeb",
-      "projectPath": "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\SportsClub\\SportsClubWeb.csproj",
+      "projectPath": "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\SportsClub\\SportsClubWeb.csproj",
       "packagesPath": "C:\\Users\\Allievo 12\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\SportsClub\\obj\\",
+      "outputPath": "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\SportsClub\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -15390,11 +15390,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\EF_DB_Layer_\\EF_DB_Layer.csproj": {
-              "projectPath": "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\EF_DB_Layer_\\EF_DB_Layer.csproj"
+            "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\EF_DB_Layer_\\EF_DB_Layer.csproj": {
+              "projectPath": "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\EF_DB_Layer_\\EF_DB_Layer.csproj"
             },
-            "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\SportsClubModel_\\SportsClubModel.csproj": {
-              "projectPath": "C:\\Users\\Allievo 12\\Desktop\\Progetto_10_03\\Aggiornato_08-03_EndDay\\SportsClubModel_\\SportsClubModel.csproj"
+            "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\SportsClubModel_\\SportsClubModel.csproj": {
+              "projectPath": "C:\\Users\\Allievo 12\\Documents\\GitHub\\SportsClubForte\\SportsClubModel_\\SportsClubModel.csproj"
             }
           }
         }
