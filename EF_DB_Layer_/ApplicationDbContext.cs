@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-
 namespace EF_DB_Layer
 {
     public class ApplicationDbContext : DbContext
@@ -22,9 +21,9 @@ namespace EF_DB_Layer
 
         public DbSet<Challenge> Challenges { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelbuilder.Entity<Field>().ToTable("Fields")
+            modelBuilder.Entity<Field>().ToTable("Fields")
                 .HasDiscriminator<int>("Sports")
                 .HasValue<PaddleCourt>((int)Sports.Paddle)
                 .HasValue<TennisCourt>((int)Sports.Tennis)
@@ -36,17 +35,21 @@ namespace EF_DB_Layer
             //    .HasForeignKey<Challenge>(c => c.ReservationId)
             //    .IsRequired().OnDelete(DeleteBehavior.Restrict);
 
-            modelbuilder.Entity<User>()
-                 .Ignore(u=>u.Challenge);
-
-
-            modelbuilder.Entity<Reservation>()
+            modelBuilder.Entity<Reservation>()
                 .HasOne(r => r.Challenge)
                 .WithOne(c => c.Reservation)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            
-                
+            modelBuilder.Entity<ChallengesUsers>()
+        .HasKey(cu => new { cu.ChallengeId, cu.UserId});
+            modelBuilder.Entity<ChallengesUsers>()
+                .HasOne(cu => cu.User)
+                .WithMany(c => c.ChallengesUsers)
+                .HasForeignKey(cu => cu.UserId);
+            modelBuilder.Entity<ChallengesUsers>()
+                .HasOne(cu => cu.Challenge)
+                .WithMany(u => u.ChallengesUsers)
+                .HasForeignKey(cu => cu.ChallengeId);
         }
     }
 

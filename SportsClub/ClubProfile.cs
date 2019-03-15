@@ -15,8 +15,10 @@ namespace SportsClubWeb
             this.CreateMap<User, UserDTO>()
                 .ReverseMap();
 
-            this.CreateMap<Field, FieldDTO>()
-                .ReverseMap();
+            this.CreateMap<Field, FieldDTO>().ForMember(f => f.Sport, opt => opt.MapFrom(source => ToSport(source.GetType().Name)));
+
+            this.CreateMap<FieldDTO, Field>();
+                
 
             this.CreateMap<Reservation, ReservationsDTO>()
                 .ReverseMap()
@@ -24,6 +26,21 @@ namespace SportsClubWeb
 
             //Challenge?
 
+        }
+
+        public string ToSport(string courtName)
+        {
+            string sport = null;
+
+            if (courtName.Contains("Court"))
+            {
+                sport = courtName.Replace("Court", "");
+            }
+            else if (courtName.Contains("Field"))
+            {
+                sport = courtName.Replace("Field", "");
+            }
+            return sport;
         }
     }
 }

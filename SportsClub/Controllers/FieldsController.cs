@@ -6,6 +6,7 @@ using SportsClubModel;
 using SportsClubModel.Interfaces;
 using SportsClubWeb.DTO;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SportsClub.Controllers
@@ -23,20 +24,21 @@ namespace SportsClub.Controllers
             Mapper = mapper;
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<FieldDTO[]>> Get(bool includeTalks = false)
-        //{
-        //    try
-        //    {
-        //        var results = await Repository.GetAllFieldsAsync(includeTalks);
+        [HttpGet]
+        public async Task<ActionResult<FieldDTO[]>> Get(bool includeTalks = false)
+        {
+            try
+            {
+                var results = await UnitOfWork.GetAllFieldsAsync();
+                if (!results.Any()) return NotFound();
 
-        //        return _mapper.Map<CampModel[]>(results);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
-        //    }
-        //}
+                return Mapper.Map<FieldDTO[]>(results);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+        }
 
         public async Task<ActionResult<FieldDTO>> Post(FieldDTO dto)
         {

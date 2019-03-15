@@ -54,3 +54,47 @@ C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_Tests\obj\Debug
 C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csproj.CopyComplete
 C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.dll
 C:\Users\Allievo 12\Documents\GitHub\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.pdb
+C:\Users\Allievo 9\source\repos\frasabbi\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csprojAssemblyReference.cache
+C:\Users\Allievo 9\source\repos\frasabbi\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csproj.CoreCompileInputs.cache
+C:\Users\Allievo 9\source\repos\frasabbi\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.AssemblyInfoInputs.cache
+C:\Users\Allievo 9\source\repos\frasabbi\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.AssemblyInfo.cs
+C:\Users\Allievo 9\source\repos\frasabbi\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.dll
+C:\Users\Allievo 9\source\repos\frasabbi\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.pdb
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.deps.json
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.runtimeconfig.json
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.runtimeconfig.dev.json
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.dll
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.pdb
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer.dll
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer.pdb
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csprojAssemblyReference.cache
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csproj.CoreCompileInputs.cache
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.AssemblyInfoInputs.cache
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.AssemblyInfo.cs
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csproj.CopyComplete
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.dll
+C:\Users\Allievo 10\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.pdb
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.deps.json
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.runtimeconfig.json
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.runtimeconfig.dev.json
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.dll
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer_Tests.pdb
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer.dll
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\SportsClubModel.dll
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\EF_DB_Layer.pdb
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\bin\Debug\netcoreapp2.2\SportsClubModel.pdb
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csprojAssemblyReference.cache
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csproj.CoreCompileInputs.cache
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.AssemblyInfoInputs.cache
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.AssemblyInfo.cs
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.csproj.CopyComplete
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.dll
+C:\Users\Allievo.ALLIEVO105\Desktop\SportsClubForte\EF_DB_Layer_Tests\obj\Debug\netcoreapp2.2\EF_DB_Layer_Tests.pdb

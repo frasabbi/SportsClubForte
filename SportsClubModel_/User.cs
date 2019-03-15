@@ -19,24 +19,27 @@ namespace SportsClubModel
         public DateTime DateOfRegistration { get; set; }
         [Required]
         public string Address { get; set; }
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string PhoneNumber { get; set; }
         public int Reservations { get; set; }
         public decimal SpentMoney { get; set; }
-        public int Challenge { get; set; }
+        public int Challenges { get; set; }
         public int Wins { get; set; }
+        public ICollection<ChallengesUsers> ChallengesUsers { get; set; }
 
         public User() { }
 
-        public User(string firstName, string lastName, DateTime birthdate, string address)
+        public User(string firstName, string lastName, DateTime birthdate, string address, string email, string phoneNumber)
         {
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthdate.Date;
             DateOfRegistration = DateTime.Now.Date;
             Address = address;
-            Reservations = 0;
-            SpentMoney = 0;
-            Challenge = 0;
-            Wins = 0;
+            Email = email;
+            PhoneNumber = phoneNumber;
         }
      }
 

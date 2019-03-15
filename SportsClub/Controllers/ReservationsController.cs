@@ -23,7 +23,6 @@ namespace SportsClubWeb.Controllers
             Mapper = mapper;
         }
 
-        //Devono essere asincroni? In che modo se metto le Get sincrone?
         [HttpGet]
         public async Task<ActionResult<ReservationsDTO[]>> Get()
         {

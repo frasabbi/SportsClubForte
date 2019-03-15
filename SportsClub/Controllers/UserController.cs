@@ -16,13 +16,13 @@ namespace SportsClubWeb.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        private readonly IUserUnitOfWork unitOfWork;
+        private readonly IUserUnitOfWork UnitOfWork;
         private readonly IMapper Mapper;
         private readonly LinkGenerator LinkGenerator;
 
         public UserController(IUserUnitOfWork unit, IMapper mapper, LinkGenerator linkGenerator)
         {
-            unitOfWork = unit;
+            UnitOfWork = unit;
             Mapper = mapper;
             LinkGenerator = linkGenerator;
         }
@@ -30,11 +30,10 @@ namespace SportsClubWeb.Controllers
         [HttpGet]
         public async Task<ActionResult<UserDTO[]>> Get()
         {
-            //User nicoletta = new User(firstName:"Nicoletta", lastName:"Magi", birthdate:new DateTime(1991 / 11 / 5), address:"Via Paleocapa");
             try
 
             {
-                var results = await unitOfWork.GetAllUsersAsync();
+                var results = await UnitOfWork.GetAllUsersAsync();
                 if (!results.Any()) return NotFound();
 
                 return Mapper.Map<UserDTO[]>(results);
@@ -50,7 +49,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = await unitOfWork.GetAllUsersByLastNameAsync(token);
+                var results = await UnitOfWork.GetAllUsersByLastNameAsync(token);
                 if (!results.Any()) return NotFound();
 
                 return Mapper.Map<UserDTO[]>(results);
@@ -66,7 +65,7 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var results = await unitOfWork.GetUsersByDateOfBirthRangeAsync(start, end);
+                var results = await UnitOfWork.GetUsersByDateOfBirthRangeAsync(start, end);
                 if (!results.Any()) return NotFound();
 
                 return Mapper.Map<UserDTO[]>(results);
@@ -98,17 +97,15 @@ namespace SportsClubWeb.Controllers
         {
             try
             {
-                var oldUser = await unitOfWork.GetUserByIdAsync(userId);
+                var oldUser = await UnitOfWork.GetUserByIdAsync(userId);
                 if (oldUser == null)
                 {
                     return NotFound();
                 }
 
-                await unitOfWork.RemoveUserAsync(userId);
-                if (await unitOfWork.SaveChangesAsync())
-                {
-                    return Ok();
-                }
+                await UnitOfWork.RemoveUserAsync(userId);
+                
+                return Ok();
             }
             catch (Exception)
             {
@@ -119,16 +116,10 @@ namespace SportsClubWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserDTO>> Post(UserDTO dto)
+        public async Task<ActionResult<UserDTO>> Post([FromBody]UserDTO dto)
         {
             try
             {
-                var existing = await unitOfWork.GetUserByIdAsync(dto.UserId);
-                if (existing != null)
-                {
-                    return BadRequest("User already exists");
-                }
-
                 //Link Generator
                 var location = LinkGenerator.GetPathByAction("Get", "User", new {id = dto.UserId});
                 if(string.IsNullOrWhiteSpace(location))
@@ -139,7 +130,7 @@ namespace SportsClubWeb.Controllers
                 var user = Mapper.Map<User>(dto);
 
                 //Da risolvere
-                await unitOfWork.AddUserAsync(user);
+                await UnitOfWork.AddUserAsync(user);
                 
                 return Created($"/api/users/{user.UserId}", Mapper.Map<UserDTO>(user));
                 
@@ -152,18 +143,18 @@ namespace SportsClubWeb.Controllers
         }
 
         [HttpPut("{userId}")]
-        public async Task<ActionResult<UserDTO>> Put(int userId, UserDTO dto)
+        public async Task<ActionResult<UserDTO>> Put(int userId, [FromBody]UserDTO dto)
         {
             try
             {
-                var oldUser = await unitOfWork.GetUserByIdAsync(userId);
+                var oldUser = await UnitOfWork.GetUserByIdAsync(userId);
                 if (oldUser == null)
                 {
                     return NotFound($"Could not find user with id: {userId}");
                 }
                 Mapper.Map(dto, oldUser);
 
-                if (await unitOfWork.SaveChangesAsync())
+                if (await UnitOfWork.SaveChangesAsync())
                 {
                     return Mapper.Map<UserDTO>(oldUser);
                 }

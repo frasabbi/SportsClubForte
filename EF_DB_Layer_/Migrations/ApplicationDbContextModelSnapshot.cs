@@ -29,16 +29,25 @@ namespace EF_DB_Layer.Migrations
 
                     b.Property<int>("ReservationId");
 
-                    b.Property<int>("UserId");
-
                     b.HasKey("ChallengeId");
 
                     b.HasIndex("ReservationId")
                         .IsUnique();
 
+                    b.ToTable("Challenges");
+                });
+
+            modelBuilder.Entity("SportsClubModel.ChallengesUsers", b =>
+                {
+                    b.Property<int>("ChallengeId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("ChallengeId", "UserId");
+
                     b.HasIndex("UserId");
 
-                    b.ToTable("Challenges");
+                    b.ToTable("ChallengesUsers");
                 });
 
             modelBuilder.Entity("SportsClubModel.Field", b =>
@@ -108,14 +117,20 @@ namespace EF_DB_Layer.Migrations
 
                     b.Property<DateTime>("BirthDate");
 
-                    b.Property<int?>("ChallengeId");
+                    b.Property<int>("Challenges");
 
                     b.Property<DateTime>("DateOfRegistration");
+
+                    b.Property<string>("Email")
+                        .IsRequired();
 
                     b.Property<string>("FirstName")
                         .IsRequired();
 
                     b.Property<string>("LastName")
+                        .IsRequired();
+
+                    b.Property<string>("PhoneNumber")
                         .IsRequired();
 
                     b.Property<int>("Reservations");
@@ -125,8 +140,6 @@ namespace EF_DB_Layer.Migrations
                     b.Property<int>("Wins");
 
                     b.HasKey("UserId");
-
-                    b.HasIndex("ChallengeId");
 
                     b.ToTable("Users");
                 });
@@ -160,9 +173,17 @@ namespace EF_DB_Layer.Migrations
                         .WithOne("Challenge")
                         .HasForeignKey("SportsClubModel.Challenge", "ReservationId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("SportsClubModel.ChallengesUsers", b =>
+                {
+                    b.HasOne("SportsClubModel.Challenge", "Challenge")
+                        .WithMany("ChallengesUsers")
+                        .HasForeignKey("ChallengeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SportsClubModel.User", "User")
-                        .WithMany()
+                        .WithMany("ChallengesUsers")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -178,13 +199,6 @@ namespace EF_DB_Layer.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SportsClubModel.User", b =>
-                {
-                    b.HasOne("SportsClubModel.Challenge")
-                        .WithMany("Brawlers")
-                        .HasForeignKey("ChallengeId");
                 });
 #pragma warning restore 612, 618
         }
